@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
 
   spec.homepage     = "https://github.com/13662049573/TFY_PhotoBrowser"
   
-  spec.license      = "MIT (example)"
+  spec.license      = { :type => "MIT", :file => "LICENSE" }
   
   spec.author       = { "田风有" => "420144542@qq.com" }
   
