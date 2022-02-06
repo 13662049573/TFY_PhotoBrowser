@@ -12,7 +12,7 @@ Pod::Spec.new do |spec|
   图片视频浏览器
                    DESC
 
-  spec.homepage     = "http://EXAMPLE/TFY_PhotoBrowserKit"
+  spec.homepage     = "https://github.com/13662049573/TFY_PhotoBrowser"
   
   spec.license      = "MIT (example)"
   
@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
   
   spec.platform     = :ios, "12.0"
 
-  spec.source       = { :git => "http://EXAMPLE/TFY_PhotoBrowserKit.git", :tag => spec.version }
+  spec.source       = { :git => "https://github.com/13662049573/TFY_PhotoBrowser.git", :tag => spec.version }
 
   spec.source_files  = "TFY_PhotoBrowser/TFY_PhotoBrowserKit/TFY_PhotoBrowserKit.h"
 
