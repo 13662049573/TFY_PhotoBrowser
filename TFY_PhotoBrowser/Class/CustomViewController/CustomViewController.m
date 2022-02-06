@@ -91,7 +91,7 @@
         [bgView addSubview:imgItem];
         
         TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
-        items.url = [arr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        items.photoUrl = [arr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         items.sourceView = imgItem;
         [self.itemsArr addObject:items];
     }

@@ -85,7 +85,7 @@
             
             TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
             items.sourceView = imageView;
-            items.url = _urlArr[i];
+            items.photoUrl = _urlArr[i];
             [self.itemsArr addObject:items];
         }else if(i == 3) {
             
@@ -119,7 +119,7 @@
             TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
             items.sourceView = imageView;
             items.isVideo = true;
-            items.url = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+            items.photoUrl = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
             
             [self.itemsArr addObject:items];
         }else {

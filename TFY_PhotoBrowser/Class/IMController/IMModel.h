@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IMModel : NSObject
 
-@property (nonatomic,copy  ) NSString *url;
+@property (nonatomic,copy  ) NSString *photoUrl;
 @property (nonatomic,assign) BOOL isVideo;
 @property (nonatomic,copy  ) NSString *videoPlaceHolderUrl;
 @property (nonatomic,assign) BOOL isLeft;

@@ -15,8 +15,9 @@
 @property (nonatomic,strong) TFY_PhotoAVPlayerActionView *actionView;
 @property (nonatomic,strong) TFY_PhotoAVPlayerActionBar  *actionBar;
 
-@property (nonatomic,copy  ) NSString *url;
+@property (nonatomic,copy  ) NSString *photoUrl;
 @property (nonatomic,strong) UIImage *placeHolder;
+@property (nonatomic,strong) NSData *photoData;
 
 @property (nonatomic,strong) id timeObserver;
 
@@ -105,7 +106,7 @@
     
     _downloadBlock = nil;
     
-    _url = photoItems.url;
+    _photoUrl = photoItems.photoUrl;
     _placeHolder = placeHolder;
     _progressHUD = progressHUD;
     _photoItems  = photoItems;
@@ -118,7 +119,7 @@
     
     _item = nil;
     
-    if ([photoItems.url hasPrefix:@"http"]) {
+    if ([photoItems.photoUrl hasPrefix:@"http"] || [photoItems.photoUrl hasPrefix:@"https"]) {
         
         TFY_PhotoDownloadFileMgr *fileMgr = [[TFY_PhotoDownloadFileMgr alloc] init];
         if ([fileMgr startCheckIsExistVideo:photoItems]) {
@@ -128,10 +129,12 @@
             NSString *filePath = [fileMgr startGetFilePath:photoItems];
             _item = [AVPlayerItem playerItemWithAsset:[AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:filePath] options:nil]];
         }
-    }else {
-        progressHUD.hidden = true;
-        _actionView.isBuffering = true;
-        _item = [AVPlayerItem playerItemWithAsset:[AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_url] options:nil]];
+    } else {
+        if (photoItems.photoUrl != nil) {
+            progressHUD.hidden = true;
+            _actionView.isBuffering = true;
+            _item = [AVPlayerItem playerItemWithAsset:[AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_photoUrl] options:nil]];
+        }
     }
     
     _item.canUseNetworkResourcesForLiveStreamingWhilePaused = true;
@@ -150,7 +153,6 @@
 }
 
 - (void)addObserverAndAudioSession{
-    // AudioSession setting
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:true error:nil];
     if(_isSoloAmbient == true) {
@@ -276,7 +278,7 @@
 /// AVPlayer will cancel swipe
 - (void)playerWillSwipeCancel{
     TFY_PhotoDownloadFileMgr *fileMgr = [[TFY_PhotoDownloadFileMgr alloc] init];
-    if ([self.photoItems.url hasPrefix:@"http"]) {
+    if ([self.photoItems.photoUrl hasPrefix:@"http"] || [self.photoItems.photoUrl hasPrefix:@"https"]) {
         if ([fileMgr startCheckIsExistVideo:self.photoItems] == false && _progressHUD.progress != 1.0) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(PhotoBrowserAnimateTime * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 self->_progressHUD.hidden = false;
@@ -331,7 +333,7 @@
  */
 - (void)photoAVPlayerActionViewPauseOrStop{
     TFY_PhotoDownloadFileMgr *fileMgr = [[TFY_PhotoDownloadFileMgr alloc] init];
-    if ([_photoItems.url hasPrefix:@"http"] == true && [fileMgr startCheckIsExistVideo:_photoItems] == false) {
+    if (([_photoItems.photoUrl hasPrefix:@"http"] == true || [self.photoItems.photoUrl hasPrefix:@"https"] == true)&& [fileMgr startCheckIsExistVideo:_photoItems] == false) {
         if (![[TFY_Reachability reachabilityForInternetConnection] isReachable]) { // no network
             [_progressHUD setHidden:true];
             return;
@@ -368,7 +370,7 @@
                 weakself.downloadBlock(downloadState, progress);
             }
         }];
-    }else {
+    } else {
         _progressHUD.hidden = true;
         if (_isPlaying == false) {
             [_player play];

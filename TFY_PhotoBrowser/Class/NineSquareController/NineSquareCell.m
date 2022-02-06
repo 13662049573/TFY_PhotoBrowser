@@ -89,7 +89,7 @@
                     if ( i == 1) {
                         // locate video , get the first image of video
                         AVURLAsset *avAsset = nil;
-                        avAsset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:itemM.url]];
+                        avAsset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:itemM.photoUrl]];
                         if (avAsset) {
                             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                                 AVAssetImageGenerator *generator = [AVAssetImageGenerator assetImageGeneratorWithAsset:avAsset];
@@ -104,35 +104,35 @@
                     }else if (i == 2 || i == 3){
                         [imageView sd_setImageWithURL:[NSURL URLWithString:itemM.placeHolderUrl] placeholderImage:nil];
                     }else {
-                        [imageView sd_setImageWithURL:[NSURL URLWithString:itemM.url] placeholderImage:nil];
+                        [imageView sd_setImageWithURL:[NSURL URLWithString:itemM.photoUrl] placeholderImage:nil];
                     }
                     TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
                     photoItems.sourceView = imageView;
                     if(i == 2 || i == 3){
                         photoItems.isVideo = true;
-                        photoItems.url = itemM.url;
+                        photoItems.photoUrl = itemM.photoUrl;
                         photoItems.videoPlaceHolderImageUrl = itemM.placeHolderUrl;
                     }else if (i == 1){
                         photoItems.isVideo = true;
-                        photoItems.url = itemM.url;
+                        photoItems.photoUrl = itemM.photoUrl;
                     }else {
-                        photoItems.url = [itemM.url stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                        photoItems.photoUrl = [itemM.photoUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                     }
                     [self.photoItemsArr addObject:photoItems];
                 }else if (i == 7) {
-                    NSData *data = [NSData dataWithContentsOfFile:itemM.url];
+                    NSData *data = [NSData dataWithContentsOfFile:itemM.photoUrl];
                     SDAnimatedImage *animatedImage = [[SDAnimatedImage alloc] initWithData:data];
                     imageView.image = animatedImage;
                     
                     TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
                     photoItems.sourceView = imageView;
-                    photoItems.url = [itemM.url stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                    photoItems.photoUrl = [itemM.photoUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                     [self.photoItemsArr addObject:photoItems];
                 }else if (i == 8) {
-                    [imageView sd_setImageWithURL:[NSURL URLWithString:itemM.url] placeholderImage:nil];
+                    [imageView sd_setImageWithURL:[NSURL URLWithString:itemM.photoUrl] placeholderImage:nil];
                     TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
                     photoItems.sourceView = imageView;
-                    photoItems.url = [itemM.url stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                    photoItems.photoUrl = [itemM.photoUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                     [self.photoItemsArr addObject:photoItems];
                 }
             }else {
@@ -152,7 +152,7 @@
                 if ( i == 1) {
                     // locate video , get the first image of video
                     AVURLAsset *avAsset = nil;
-                    avAsset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:itemM.url]];
+                    avAsset = [AVURLAsset assetWithURL:[NSURL fileURLWithPath:itemM.photoUrl]];
                     if (avAsset) {
                         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                             AVAssetImageGenerator *generator = [AVAssetImageGenerator assetImageGeneratorWithAsset:avAsset];
@@ -166,10 +166,10 @@
                         });
                     }
                     photoItems.isVideo = true;
-                    photoItems.url = itemM.url;
+                    photoItems.photoUrl = itemM.photoUrl;
                 }else {
-                    imageView.image = [UIImage imageNamed:itemM.url];
-                    photoItems.sourceImage = [UIImage imageNamed:itemM.url];
+                    imageView.image = [UIImage imageNamed:itemM.photoUrl];
+                    photoItems.sourceImage = [UIImage imageNamed:itemM.photoUrl];
                 }
                 [self.photoItemsArr addObject:photoItems];
             }else {

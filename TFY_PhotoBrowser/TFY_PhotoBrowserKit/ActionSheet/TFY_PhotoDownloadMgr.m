@@ -50,7 +50,7 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
 }
 
 - (void)downloadVideoWithPhotoItems:(TFY_PhotoItems *)photoItems downloadBlock:(PhotoDownLoadBlock)downloadBlock{
-    if (photoItems.url == nil) {
+    if (photoItems.photoUrl == nil) {
         return;
     }
     if (_tempItem == photoItems) {
@@ -58,15 +58,15 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
         return;
     }
     _item          = [[TFY_PhotoItems alloc] init];
-    _item.url      = photoItems.url;
+    _item.photoUrl      = photoItems.photoUrl;
     _tempItem      = photoItems;
     _downloadBlock = downloadBlock;
     
     [self cancelTask];
     
     if (photoItems.isVideo == true) {
-        NSURL *url = [NSURL URLWithString:photoItems.url];
-        if ([url.scheme containsString:@"http"]) {
+        NSURL *url = [NSURL URLWithString:photoItems.photoUrl];
+        if ([url.scheme containsString:@"http"] || [url.scheme containsString:@"https"]) {
             [self startDownLoadWithURL:url.absoluteString];
         }
     }else {
@@ -118,7 +118,7 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
 }
 - (void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location {
     
-    NSString *file = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:_item.url.lastPathComponent.stringByDeletingPathExtension],_item.url.pathExtension]];
+    NSString *file = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:_item.photoUrl.lastPathComponent.stringByDeletingPathExtension],_item.photoUrl.pathExtension]];
     
     [[NSFileManager defaultManager] copyItemAtURL:location toURL:[NSURL fileURLWithPath:file] error:nil];
 }
@@ -150,7 +150,7 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
 
 /// check is contain video or not
 - (BOOL)startCheckIsExistVideo:(TFY_PhotoItems *)photoItems {
-    if (photoItems == nil || photoItems.url == nil) {
+    if (photoItems == nil || photoItems.photoUrl == nil) {
         return false;
     }
     
@@ -163,14 +163,14 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
         [fileMgr createDirectoryAtPath:_filePath withIntermediateDirectories:true attributes:nil error:nil];
         return false;
     }else {
-        NSString *path = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:photoItems.url.lastPathComponent.stringByDeletingPathExtension],photoItems.url.pathExtension]];
+        NSString *path = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:photoItems.photoUrl.lastPathComponent.stringByDeletingPathExtension],photoItems.photoUrl.pathExtension]];
         return [fileMgr fileExistsAtPath:path];
     }
 }
 
 /// get video filepath , but it must download before
 - (NSString *)startGetFilePath:(TFY_PhotoItems *)photoItems {
-    NSString *path = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:photoItems.url.lastPathComponent.stringByDeletingPathExtension],photoItems.url.pathExtension]];
+    NSString *path = [_filePath stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.%@",[self md5:photoItems.photoUrl.lastPathComponent.stringByDeletingPathExtension],photoItems.photoUrl.pathExtension]];
     return path;
 }
 
@@ -192,7 +192,7 @@ static TFY_PhotoDownloadMgr *_mgr = nil;
     if (photoItems == nil) {
         return;
     }
-    [self removeVideoByURLString:photoItems.url];
+    [self removeVideoByURLString:photoItems.photoUrl];
 }
 
 /// remove video by url string

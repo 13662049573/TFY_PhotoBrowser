@@ -52,7 +52,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// 目前指数
 @property (nonatomic,assign) NSInteger currentIndex;
 
-/// itemsArr包含TFY_PhotoItems: url | sourceView.....
+/// itemsArr包含TFY_PhotoItems: photoUrl | sourceView.....
 @property (nonatomic,strong) NSArray<TFY_PhotoItems *> *itemsArr;
 
 /// delegate

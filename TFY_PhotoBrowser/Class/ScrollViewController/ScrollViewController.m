@@ -86,7 +86,7 @@
         [scrollView addSubview:imageView];
         
         TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
-        items.url = [self.dataArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        items.photoUrl = [self.dataArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         items.sourceView = imageView;
         [self.itemsArr addObject:items];
     }

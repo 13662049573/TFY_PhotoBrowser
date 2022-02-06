@@ -74,14 +74,14 @@
         _imgView.frame = CGRectMake(ScreenWidth - 100 * imModel.rate - 90, 20, 100 * imModel.rate, 100);
     }
     
-    if ([imModel.url hasPrefix:@"http"]) {
+    if ([imModel.photoUrl hasPrefix:@"http"]) {
         if (imModel.isVideo == true) {
             [_imgView sd_setImageWithURL:[NSURL URLWithString:imModel.videoPlaceHolderUrl]];
         }else {
-            [_imgView sd_setImageWithURL:[NSURL URLWithString:imModel.url]];
+            [_imgView sd_setImageWithURL:[NSURL URLWithString:imModel.photoUrl]];
         }
     }else {
-        _imgView.image = [UIImage imageNamed:imModel.url];
+        _imgView.image = [UIImage imageNamed:imModel.photoUrl];
     }
 }
 

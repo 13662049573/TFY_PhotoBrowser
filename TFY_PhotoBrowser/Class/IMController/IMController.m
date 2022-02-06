@@ -27,26 +27,26 @@
         {
             IMModel *m = [[IMModel alloc] init];
             m.isLeft = true;
-            m.url = @"1.jpg";
+            m.photoUrl = @"1.jpg";
             m.rate = 0.67;
             [_dataArr addObject:m];
         }
         {
             IMModel *m = [[IMModel alloc] init];
-            m.url = @"2.jpg";
+            m.photoUrl = @"2.jpg";
             m.rate = 0.67;
             [_dataArr addObject:m];
         }
         {
             IMModel *m = [[IMModel alloc] init];
             m.isLeft = true;
-            m.url = @"3.jpg";
+            m.photoUrl = @"3.jpg";
             m.rate = 0.71;
             [_dataArr addObject:m];
         }
         {
             IMModel *m = [[IMModel alloc] init];
-            m.url = @"4.jpg";
+            m.photoUrl = @"4.jpg";
             m.rate = 0.67;
             [_dataArr addObject:m];
         }
@@ -54,12 +54,12 @@
             IMModel *m = [[IMModel alloc] init];
             m.isLeft = true;
             m.rate = 0.70;
-            m.url = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
+            m.photoUrl = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
             [_dataArr addObject:m];
         }
         {
             IMModel *m = [[IMModel alloc] init];
-            m.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            m.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             m.rate = 1.6;
             [_dataArr addObject:m];
         }
@@ -67,7 +67,7 @@
             IMModel *m = [[IMModel alloc] init];
             m.isLeft = true;
             m.rate = 0.56;
-            m.url = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
+            m.photoUrl = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
             m.isVideo = true;
             m.videoPlaceHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103742.png";
             [_dataArr addObject:m];
@@ -75,7 +75,7 @@
         {
             IMModel *m = [[IMModel alloc] init];
             m.rate = 1.79;
-            m.url = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+            m.photoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
             m.videoPlaceHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103823.png";
             m.isVideo = true;
             [_dataArr addObject:m];
@@ -84,7 +84,7 @@
             IMModel *m = [[IMModel alloc] init];
             m.isLeft = true;
             m.rate = 0.67;
-            m.url = @"9.jpg";
+            m.photoUrl = @"9.jpg";
             [_dataArr addObject:m];
         }
     }
@@ -166,18 +166,18 @@
         IMModel *m = self.dataArr[i];
         
         TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
-        if (m.url == nil || [m.url isEqualToString:@""] == true) { // it's not a pic, maybe it is a text
+        if (m.photoUrl == nil || [m.photoUrl isEqualToString:@""] == true) { // it's not a pic, maybe it is a text
             
         }else {
             if (m.isVideo == true) { // video
                 photoItems.isVideo = true;
-                photoItems.url = m.url;
+                photoItems.photoUrl = m.photoUrl;
                 photoItems.videoPlaceHolderImageUrl = m.videoPlaceHolderUrl;
             }else { // pic
-                if ([m.url hasPrefix:@"http"] == true) { // net pic
-                    photoItems.url = [m.url stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                if ([m.photoUrl hasPrefix:@"http"] == true) { // net pic
+                    photoItems.photoUrl = [m.photoUrl stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
                 }else { // loc pic
-                    photoItems.sourceImage = [UIImage imageNamed:m.url];
+                    photoItems.sourceImage = [UIImage imageNamed:m.photoUrl];
                 }
             }
             [self.itemsArr addObject:photoItems];
@@ -194,7 +194,7 @@
         
         for (NSInteger j = 0; j < visibleCells.count; j++) {
             IMTableViewCell *cell = (IMTableViewCell *)visibleCells[j];
-            if (cell.imModel.url == nil) {
+            if (cell.imModel.photoUrl == nil) {
                 
             }else {
                 if(m == cell.imModel){

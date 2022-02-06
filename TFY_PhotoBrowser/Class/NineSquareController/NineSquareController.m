@@ -30,7 +30,7 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            itemM.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             [arr addObject:itemM];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -43,16 +43,16 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            itemM.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+            itemM2.photoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
             itemM2.isVideo = true;
             itemM2.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103823.png";
             [arr addObject:itemM2];
@@ -67,28 +67,28 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            itemM.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+            itemM2.photoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
             itemM2.isVideo = true;
             itemM2.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103823.png";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
+            itemM3.photoUrl = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
             itemM3.isVideo = true;
             itemM3.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103742.png";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
+            itemM4.photoUrl = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
             [arr addObject:itemM4];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -101,36 +101,36 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            itemM.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+            itemM2.photoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
             itemM2.isVideo = true;
             itemM2.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103823.png";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
+            itemM3.photoUrl = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
             itemM3.isVideo = true;
             itemM3.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103742.png";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
+            itemM4.photoUrl = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
             [arr addObject:itemM4];
             
             NineSquareItemsModel *itemM5 = [[NineSquareItemsModel alloc] init];
-            itemM5.url = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
+            itemM5.photoUrl = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
             [arr addObject:itemM5];
             
             NineSquareItemsModel *itemM6 = [[NineSquareItemsModel alloc] init];
-            itemM6.url = @"http://ww2.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr39ht9j20gy0o6q74.jpg";
+            itemM6.photoUrl = @"http://ww2.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr39ht9j20gy0o6q74.jpg";
             [arr addObject:itemM6];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -143,45 +143,45 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
+            itemM.photoUrl = @"http://wx3.sinaimg.cn/thumbnail/9bbc284bgy1frtdh1idwkj218g0rs7li.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
+            itemM2.photoUrl = @"http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4";
             itemM2.isVideo = true;
             itemM2.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103823.png";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
+            itemM3.photoUrl = @"https://aweme.snssdk.com/aweme/v1/playwm/?video_id=v0200ff00000bdkpfpdd2r6fb5kf6m50&line=0.MP4";
             itemM3.isVideo = true;
             itemM3.placeHolderUrl = @"https://edu-201121.oss-cn-beijing.aliyuncs.com/WX20210106-103742.png";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
+            itemM4.photoUrl = @"http://ww2.sinaimg.cn/thumbnail/677febf5gw1erma104rhyj20k03dz16y.jpg";
             [arr addObject:itemM4];
             
             NineSquareItemsModel *itemM5 = [[NineSquareItemsModel alloc] init];
-            itemM5.url = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
+            itemM5.photoUrl = @"http://ww3.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr1xydcj20gy0o9q6s.jpg";
             [arr addObject:itemM5];
             
             NineSquareItemsModel *itemM6 = [[NineSquareItemsModel alloc] init];
-            itemM6.url = @"http://ww2.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr39ht9j20gy0o6q74.jpg";
+            itemM6.photoUrl = @"http://ww2.sinaimg.cn/thumbnail/8e88b0c1gw1e9lpr39ht9j20gy0o6q74.jpg";
             [arr addObject:itemM6];
             
             NineSquareItemsModel *itemM7 = [[NineSquareItemsModel alloc] init];
-            itemM7.url = [[NSBundle mainBundle] pathForResource:@"gif3.GIF" ofType:nil];
+            itemM7.photoUrl = [[NSBundle mainBundle] pathForResource:@"gif3.GIF" ofType:nil];
             itemM7.isLocateGif = true;
             [arr addObject:itemM7];
             
             NineSquareItemsModel *itemM8 = [[NineSquareItemsModel alloc] init];
-            itemM8.url = @"http://ww2.sinaimg.cn/bmiddle/642beb18gw1ep3629gfm0g206o050b2a.gif";
+            itemM8.photoUrl = @"http://ww2.sinaimg.cn/bmiddle/642beb18gw1ep3629gfm0g206o050b2a.gif";
             [arr addObject:itemM8];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];

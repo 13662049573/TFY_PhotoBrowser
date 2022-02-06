@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NineSquareItemsModel: NSObject
 
-@property (nonatomic,copy  ) NSString *url;
+@property (nonatomic,copy  ) NSString *photoUrl;
 @property (nonatomic,assign) BOOL isVideo;
 @property (nonatomic,assign) BOOL isLocateGif;
 @property (nonatomic,copy  ) NSString *placeHolderUrl;

@@ -22,8 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFY_PhotoItems : NSObject
 
-/// 如果是network image或(net or locate video)，设置url，不要设置sourceImage
-@property (nonatomic,copy  ) NSString *url;
+/// 如果是network image或(net or locate video)，设置photoUrl，不要设置sourceImage
+@property (nonatomic,copy  ) NSString *photoUrl;
 
 /// 如果是locate image，设置sourceImage，不要设置url
 @property (nonatomic,strong) UIImage *sourceImage;

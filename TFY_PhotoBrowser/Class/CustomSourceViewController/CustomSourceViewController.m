@@ -88,7 +88,7 @@
         [arr addObject:@"UIImageView"];
         photoItems.sourceLinkArr = [arr copy];
         
-        photoItems.url = [self.dataArr[0] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        photoItems.photoUrl = [self.dataArr[0] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         
         [self.itemsArr addObject:photoItems];
     }
@@ -97,7 +97,7 @@
         /// for gif
         TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
         photoItems.sourceView = sourceV1;
-        photoItems.url = [self.dataArr[1] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        photoItems.photoUrl = [self.dataArr[1] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         
         NSMutableArray *arr = [NSMutableArray array];
         [arr addObject:@"CustomSourceImageView2"];
@@ -112,7 +112,7 @@
         /// for simple normal image
         TFY_PhotoItems *photoItems = [[TFY_PhotoItems alloc] init];
         photoItems.sourceView = imageView;
-        photoItems.url = [self.dataArr[2] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+        photoItems.photoUrl = [self.dataArr[2] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
         
         [self.itemsArr addObject:photoItems];
     }

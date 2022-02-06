@@ -130,7 +130,7 @@
             
             if(i == 2 || i == 3 || i == 1){
                 items.isVideo = true;
-                items.url = _urlArr[i];
+                items.photoUrl = _urlArr[i];
                 if (i == 2) {
                     items.videoPlaceHolderImageUrl = self.videoPlaceHolderUrl0;
                 }
@@ -138,7 +138,7 @@
                     items.videoPlaceHolderImageUrl = self.videoPlaceHolderUrl1;
                 }
             }else{
-                items.url = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+                items.photoUrl = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
             }
             
             [self.itemsArr addObject:items];
@@ -163,7 +163,7 @@
             TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
             items.sourceView = imageView;
             items.isLocateGif = true;
-            items.url = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+            items.photoUrl = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
             [self.itemsArr addObject:items];
         }else if (i == 8) {
             SDAnimatedImageView *imageView = [[SDAnimatedImageView alloc] init];
@@ -182,7 +182,7 @@
             
             TFY_PhotoItems *items = [[TFY_PhotoItems alloc] init];
             items.sourceView = imageView;
-            items.url = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
+            items.photoUrl = [_urlArr[i] stringByReplacingOccurrencesOfString:@"thumbnail" withString:@"bmiddle"];
             [self.itemsArr addObject:items];
         }
     }

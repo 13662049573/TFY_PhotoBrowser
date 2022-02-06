@@ -15,9 +15,9 @@
 @property (nonatomic,strong) TFY_PhotoAVPlayerActionView *actionView;
 @property (nonatomic,strong) TFY_PhotoAVPlayerActionBar  *actionBar;
 
-@property (nonatomic,copy  ) NSString *url;
+@property (nonatomic,copy  ) NSString *photoUrl;
 @property (nonatomic,strong) UIImage *placeHolder;
-
+@property (nonatomic,strong) NSData *photoData;
 @property (nonatomic,strong) id timeObserver;
 
 @property (nonatomic,assign) BOOL isPlaying;
@@ -94,17 +94,19 @@
     [self removeTimeObserver];
     [self addObserverAndAudioSession];
     
-    _url = photoItems.url;
+    _photoUrl = photoItems.photoUrl;
     _placeHolder = placeHolder;
     
     if (placeHolder) {
         _placeHolderImgView.image = placeHolder;
     }
     
-    if ([photoItems.url hasPrefix:@"http"]) {
-        _item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:photoItems.url]];
+    if ([photoItems.photoUrl hasPrefix:@"http"] || [photoItems.photoUrl hasPrefix:@"https"]) {
+        _item = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:photoItems.photoUrl]];
     }else {
-        _item = [AVPlayerItem playerItemWithAsset:[AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:_url] options:nil]];
+        if (photoItems.photoUrl != nil) {
+            _item = [AVPlayerItem playerItemWithAsset:[AVURLAsset URLAssetWithURL:[NSURL fileURLWithPath:photoItems.photoUrl] options:nil]];
+        }
     }
     
     _item.canUseNetworkResourcesForLiveStreamingWhilePaused = true;
@@ -123,7 +125,6 @@
 }
 
 - (void)addObserverAndAudioSession{
-    // AudioSession setting AVAudioSessionCategoryPlayback
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:true error:nil];
     if(_isSoloAmbient == true) {

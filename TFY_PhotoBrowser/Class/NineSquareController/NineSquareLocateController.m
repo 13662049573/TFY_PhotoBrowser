@@ -30,7 +30,7 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"1.jpg";
+            itemM.photoUrl = @"1.jpg";
             [arr addObject:itemM];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -43,16 +43,16 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"1.jpg";
+            itemM.photoUrl = @"1.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"2.jpg";
+            itemM2.photoUrl = @"2.jpg";
             [arr addObject:itemM2];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -65,24 +65,24 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"1.jpg";
+            itemM.photoUrl = @"1.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"2.jpg";
+            itemM2.photoUrl = @"2.jpg";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"3.jpg";
+            itemM3.photoUrl = @"3.jpg";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"4.jpg";
+            itemM4.photoUrl = @"4.jpg";
             [arr addObject:itemM4];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -95,32 +95,32 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"1.jpg";
+            itemM.photoUrl = @"1.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"2.jpg";
+            itemM2.photoUrl = @"2.jpg";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"3.jpg";
+            itemM3.photoUrl = @"3.jpg";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"4.jpg";
+            itemM4.photoUrl = @"4.jpg";
             [arr addObject:itemM4];
             
             NineSquareItemsModel *itemM5 = [[NineSquareItemsModel alloc] init];
-            itemM5.url = @"5.jpg";
+            itemM5.photoUrl = @"5.jpg";
             [arr addObject:itemM5];
             
             NineSquareItemsModel *itemM6 = [[NineSquareItemsModel alloc] init];
-            itemM6.url = @"6.jpg";
+            itemM6.photoUrl = @"6.jpg";
             [arr addObject:itemM6];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];
@@ -133,40 +133,40 @@
             NSMutableArray *arr = [NSMutableArray array];
             
             NineSquareItemsModel *itemM = [[NineSquareItemsModel alloc] init];
-            itemM.url = @"1.jpg";
+            itemM.photoUrl = @"1.jpg";
             [arr addObject:itemM];
             
             NineSquareItemsModel *itemM1 = [[NineSquareItemsModel alloc] init];
-            itemM1.url = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
+            itemM1.photoUrl = [[NSBundle mainBundle] pathForResource:@"location_video.MP4" ofType:nil];
             itemM1.isVideo = true;
             [arr addObject:itemM1];
             
             NineSquareItemsModel *itemM2 = [[NineSquareItemsModel alloc] init];
-            itemM2.url = @"2.jpg";
+            itemM2.photoUrl = @"2.jpg";
             [arr addObject:itemM2];
             
             NineSquareItemsModel *itemM3 = [[NineSquareItemsModel alloc] init];
-            itemM3.url = @"3.jpg";
+            itemM3.photoUrl = @"3.jpg";
             [arr addObject:itemM3];
             
             NineSquareItemsModel *itemM4 = [[NineSquareItemsModel alloc] init];
-            itemM4.url = @"4.jpg";
+            itemM4.photoUrl = @"4.jpg";
             [arr addObject:itemM4];
             
             NineSquareItemsModel *itemM5 = [[NineSquareItemsModel alloc] init];
-            itemM5.url = @"5.jpg";
+            itemM5.photoUrl = @"5.jpg";
             [arr addObject:itemM5];
             
             NineSquareItemsModel *itemM6 = [[NineSquareItemsModel alloc] init];
-            itemM6.url = @"6.jpg";
+            itemM6.photoUrl = @"6.jpg";
             [arr addObject:itemM6];
             
             NineSquareItemsModel *itemM7 = [[NineSquareItemsModel alloc] init];
-            itemM7.url = @"7.jpg";
+            itemM7.photoUrl = @"7.jpg";
             [arr addObject:itemM7];
             
             NineSquareItemsModel *itemM8 = [[NineSquareItemsModel alloc] init];
-            itemM8.url = @"8.jpg";
+            itemM8.photoUrl = @"8.jpg";
             [arr addObject:itemM8];
             
             NineSquareModel *squareM = [[NineSquareModel alloc] init];

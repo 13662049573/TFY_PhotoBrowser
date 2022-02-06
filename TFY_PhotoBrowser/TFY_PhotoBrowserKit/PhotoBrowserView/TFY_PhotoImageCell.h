@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TFY_PhotoImageCell : UICollectionViewCell
 
-- (void)imageWithUrl:(NSString *)url placeHolder:(UIImage *)placeHolder photoItem:(TFY_PhotoItems *)photoItem;
+- (void)imageWithUrl:(NSString *)photoUrl placeHolder:(UIImage *)placeHolder photoItem:(TFY_PhotoItems *)photoItem;
 
 @property (nonatomic,strong) TFY_PhotoBrowserImageView *photoBrowerImageView;
 @property (nonatomic,copy  ) PhotoBrowerSingleTap singleTap;

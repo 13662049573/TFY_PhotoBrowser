@@ -135,8 +135,8 @@
         for (NSInteger i = 0; i < _itemsArr.count; i++) {
             if(i != _currentIndex){
                 TFY_PhotoItems *items = _itemsArr[i];
-                if(items.url != nil && [items.url hasPrefix:@"http"] && items.isVideo == false){
-                    [urlArr addObject:[NSURL URLWithString:items.url]];
+                if(items.photoUrl != nil && ([items.photoUrl hasPrefix:@"http"] || [items.photoUrl hasPrefix:@"https"]) && items.isVideo == false){
+                    [urlArr addObject:[NSURL URLWithString:items.photoUrl]];
                 }
             }
         }
@@ -149,8 +149,8 @@
         }
         for (NSInteger i = index; i < _itemsArr.count; i++) {
             TFY_PhotoItems *items = _itemsArr[i];
-            if(items.url != nil && items.isVideo == false && [items.url hasPrefix:@"http"]){
-                [urlArr addObject:[NSURL URLWithString:items.url]];
+            if(items.photoUrl != nil && items.isVideo == false && ([items.photoUrl hasPrefix:@"http"]||[items.photoUrl hasPrefix:@"https"])){
+                [urlArr addObject:[NSURL URLWithString:items.photoUrl]];
             }
         }
     }
@@ -313,7 +313,7 @@
         [videoCell setPresentedMode:self.presentedMode];
     } else {
         TFY_PhotoImageCell *imageCell = (TFY_PhotoImageCell *)cell;
-        [imageCell imageWithUrl:item.url placeHolder:tempView.image photoItem:item];
+        [imageCell imageWithUrl:item.photoUrl placeHolder:tempView.image photoItem:item];
         [imageCell setPresentedMode:self.presentedMode];
     }
 }
@@ -668,19 +668,19 @@
         tempView.image = items.sourceImage;
         [self photoBrowserWillDismissWithAnimated:tempView items:items];
     }else{ // net image or locate image without sourceImage of items
-        if(items.url && items.isVideo == false){
+        if(items.photoUrl && items.isVideo == false){
             
             __weak typeof(self) weakself = self;
             SDImageCache *cache = [SDImageCache sharedImageCache];
-            [cache diskImageExistsWithKey:items.url completion:^(BOOL isInCache) {
+            [cache diskImageExistsWithKey:items.photoUrl completion:^(BOOL isInCache) {
                 if(isInCache){
-                    if([[[[items.url lastPathComponent] pathExtension] lowercaseString] isEqualToString:@"gif"]){ // gif image
-                        NSData *data = UIImageJPEGRepresentation([cache imageFromCacheForKey:items.url], 1.f);
+                    if([[[[items.photoUrl lastPathComponent] pathExtension] lowercaseString] isEqualToString:@"gif"]){ // gif image
+                        NSData *data = UIImageJPEGRepresentation([cache imageFromCacheForKey:items.photoUrl], 1.f);
                         if(data){
                             tempView.image = [self imageFromGifFirstImage:data];
                         }
                     }else{ // normal image
-                        tempView.image = [cache imageFromCacheForKey:items.url];
+                        tempView.image = [cache imageFromCacheForKey:items.photoUrl];
                     }
                 }else{
                     tempView.image = [[self tempViewFromSourceViewWithCurrentIndex:weakself.currentIndex] image];
@@ -946,15 +946,15 @@
 - (void)deviceWillOrientation{
     
     TFY_PhotoItems *item = self.itemsArr[_currentIndex];
-    NSString *url  = item.url;
+    NSString *photoUrl  = item.photoUrl;
     
-    if(![item.url.lastPathComponent.pathExtension.lowercaseString isEqualToString:@"gif"] && item.isVideo == false){
+    if(![item.photoUrl.lastPathComponent.pathExtension.lowercaseString isEqualToString:@"gif"] && item.isVideo == false){
         [_collectionView setHidden:true];
         [_imageView setHidden:false];
         [_progressHUD setHidden:false];
         UIImageView *tempView = [self tempViewFromSourceViewWithCurrentIndex:_currentIndex];
         
-        [_imageView imageWithUrl:[NSURL URLWithString:url]
+        [_imageView imageWithUrl:[NSURL URLWithString:photoUrl]
                      progressHUD:_progressHUD
                      placeHolder:tempView.image
                        photoItem:item];
@@ -1021,7 +1021,7 @@
  
  @param photoData data
  */
-- (void)savePhotoToLocation:(NSData *)photoData url:(NSString *)url{
+- (void)savePhotoToLocation:(NSData *)photoData photoUrl:(NSString *)photoUrl{
     __weak typeof(self) weakself = self;
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
@@ -1105,7 +1105,7 @@
     TFY_PhotoItems *items = self.itemsArr[self.currentIndex];
     __weak typeof(self) weakself = self;
     if (items.isVideo) { // video
-        if ([items.url hasPrefix:@"http"]) {
+        if ([items.photoUrl hasPrefix:@"http"]) {
             TFY_PhotoDownloadFileMgr *fileMgr = [[TFY_PhotoDownloadFileMgr alloc] init];
             if ([fileMgr startCheckIsExistVideo:items]) { // video is exist
                 NSString *filePath = [fileMgr startGetFilePath:items];
@@ -1150,13 +1150,13 @@
                 }
             }
         }else {
-            UISaveVideoAtPathToSavedPhotosAlbum(items.url, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
+            UISaveVideoAtPathToSavedPhotosAlbum(items.photoUrl, self, @selector(video:didFinishSavingWithError:contextInfo:), nil);
         }
     }else{ // image
-        if(items.url){ // net image
+        if(items.photoUrl){ // net image
             SDImageCache *cache = [SDImageCache sharedImageCache];
             SDWebImageManager *mgr = [SDWebImageManager sharedManager];
-            [cache diskImageExistsWithKey:items.url completion:^(BOOL isInCache) {
+            [cache diskImageExistsWithKey:items.photoUrl completion:^(BOOL isInCache) {
                 if(!isInCache){
                     if ([weakself.delegate respondsToSelector:@selector(photoBrowser:state:progress:photoItemRelative:photoItemAbsolute:)]) {
                         [weakself.delegate photoBrowser:weakself
@@ -1166,9 +1166,9 @@
                                       photoItemAbsolute:weakself.tempArr[weakself.currentIndex]];
                     }
                 }else{
-                    [[mgr imageCache] queryImageForKey:items.url options:SDWebImageQueryMemoryData | SDWebImageRetryFailed context:nil completion:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
+                    [[mgr imageCache] queryImageForKey:items.photoUrl options:SDWebImageQueryMemoryData | SDWebImageRetryFailed context:nil completion:^(UIImage * _Nullable image, NSData * _Nullable data, SDImageCacheType cacheType) {
                         if([image images] != nil){
-                            [weakself savePhotoToLocation:data url:items.url];
+                            [weakself savePhotoToLocation:data photoUrl:items.photoUrl];
                         }else{
                             if(image){
                                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -1375,7 +1375,7 @@
     
     if(imageView.image == nil){
         if (items.isVideo == false) {
-            if (items.url) {
+            if (items.photoUrl) {
                 UIColor *imageColor = self.placeHolderColor ? self.placeHolderColor : UIColor.clearColor;
                 CGSize size = CGSizeMake(PhotoWidth, PhotoWidth);
                 imageView.image = [self createImageWithUIColor: imageColor size: size];

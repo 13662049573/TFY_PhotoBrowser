@@ -46,10 +46,10 @@
     [self.contentView addSubview:progressHUD];
 }
 
-- (void)imageWithUrl:(NSString *)url
+- (void)imageWithUrl:(NSString *)photoUrl
          placeHolder:(UIImage *)placeHolder
            photoItem:(nonnull TFY_PhotoItems *)photoItem{
-    [_photoBrowerImageView imageWithUrl:[NSURL URLWithString:url]
+    [_photoBrowerImageView imageWithUrl:[NSURL URLWithString:photoUrl]
                             progressHUD:_progressHUD
                             placeHolder:placeHolder
                               photoItem:photoItem];
