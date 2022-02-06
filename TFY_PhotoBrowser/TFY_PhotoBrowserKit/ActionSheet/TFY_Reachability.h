@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)connectionRequired;
 - (BOOL)isConnectionOnDemand;
 - (BOOL)isInterventionRequired;
-- (NetworkStatus)currentReachabilityStatus;
+- (NetworkStatus)currentPhotoReachabilityStatus;
 - (SCNetworkReachabilityFlags)reachabilityFlags;
 - (NSString *)currentReachabilityString;
 - (NSString *)currentReachabilityFlags;
