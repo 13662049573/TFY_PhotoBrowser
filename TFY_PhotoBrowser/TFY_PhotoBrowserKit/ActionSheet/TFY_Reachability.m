@@ -13,7 +13,7 @@
 #import <ifaddrs.h>
 #import <netdb.h>
 
-NSString *const kReachabilityChangedNotification = @"kReachabilityChangedNotification";
+NSString *const kPhotoReachabilityChangedNotification = @"kPhotoReachabilityChangedNotification";
 
 @interface TFY_Reachability ()
 @property (nonatomic, assign) SCNetworkReachabilityRef  reachabilityRef;
@@ -307,7 +307,7 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
         self.reachabilityBlock(self, flags);
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kReachabilityChangedNotification
+        [[NSNotificationCenter defaultCenter] postNotificationName:kPhotoReachabilityChangedNotification
                                                             object:self];
     });
 }

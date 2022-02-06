@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <SystemConfiguration/SystemConfiguration.h>
 
-extern NSString * _Nonnull const kReachabilityChangedNotification;
+extern NSString * _Nonnull const kPhotoReachabilityChangedNotification;
 
 typedef NS_ENUM(NSInteger, NetworkStatus) {
     NotReachable = 0,
