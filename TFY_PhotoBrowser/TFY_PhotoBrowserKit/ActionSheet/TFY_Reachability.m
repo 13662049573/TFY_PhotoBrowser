@@ -257,15 +257,15 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 
 #pragma mark - reachability status stuff
 
-- (NetworkStatus)currentPhotoReachabilityStatus{
+- (PhotoNetworkStatus)currentPhotoReachabilityStatus{
     if([self isReachable]){
         if([self isReachableViaWiFi])
-            return ReachableViaWiFi;
+            return PhotoReachableViaWiFi;
 #if    TARGET_OS_IPHONE
-        return ReachableViaWWAN;
+        return PhotoReachableViaWWAN;
 #endif
     }
-    return NotReachable;
+    return PhotoNotReachable;
 }
 
 - (SCNetworkReachabilityFlags)reachabilityFlags{
@@ -277,11 +277,11 @@ static void TMReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkRea
 }
 
 - (NSString *)currentReachabilityString{
-    NetworkStatus temp = [self currentPhotoReachabilityStatus];
-    if(temp == ReachableViaWWAN){
+    PhotoNetworkStatus temp = [self currentPhotoReachabilityStatus];
+    if(temp == PhotoReachableViaWWAN){
         return NSLocalizedString(@"Cellular", @"");
     }
-    if (temp == ReachableViaWiFi){
+    if (temp == PhotoReachableViaWiFi){
         return NSLocalizedString(@"WiFi", @"");
     }
     return NSLocalizedString(@"No Connection", @"");

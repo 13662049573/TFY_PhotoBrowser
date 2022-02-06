@@ -10,10 +10,10 @@
 
 extern NSString * _Nonnull const kPhotoReachabilityChangedNotification;
 
-typedef NS_ENUM(NSInteger, NetworkStatus) {
-    NotReachable = 0,
-    ReachableViaWiFi = 2,
-    ReachableViaWWAN = 1
+typedef NS_ENUM(NSInteger, PhotoNetworkStatus) {
+    PhotoNotReachable = 0,
+    PhotoReachableViaWiFi = 2,
+    PhotoReachableViaWWAN = 1
 };
 
 @class TFY_Reachability;
@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)connectionRequired;
 - (BOOL)isConnectionOnDemand;
 - (BOOL)isInterventionRequired;
-- (NetworkStatus)currentPhotoReachabilityStatus;
+- (PhotoNetworkStatus)currentPhotoReachabilityStatus;
 - (SCNetworkReachabilityFlags)reachabilityFlags;
 - (NSString *)currentReachabilityString;
 - (NSString *)currentReachabilityFlags;
