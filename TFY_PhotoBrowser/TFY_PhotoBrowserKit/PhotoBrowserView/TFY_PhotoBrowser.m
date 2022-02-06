@@ -277,7 +277,7 @@
         TFY_PhotoVideoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoVideoCellID" forIndexPath:indexPath];
         [cell setDelegate:self];
         return cell;
-    }else {
+    } else {
         TFY_PhotoImageCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoImageCellID" forIndexPath:indexPath];
         __weak typeof(self) weakSelf = self;
         cell.singleTap = ^{

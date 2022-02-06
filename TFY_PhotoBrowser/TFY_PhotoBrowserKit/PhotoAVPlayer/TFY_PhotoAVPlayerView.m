@@ -127,8 +127,8 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:true error:nil];
     if(_isSoloAmbient == true) {
-//        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
+        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+//        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
     }else {
         [session setCategory:AVAudioSessionCategoryAmbient error:nil];
         
