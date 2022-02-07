@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "TFY_PhotoBrowserKit"
 
-  spec.version      = "2.0.8"
+  spec.version      = "2.1.0"
 
   spec.summary      = "图片视频浏览器"
 
