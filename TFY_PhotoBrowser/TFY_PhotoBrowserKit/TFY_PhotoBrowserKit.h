@@ -3,7 +3,7 @@
 //  TFY_PhotoBrowser
 //
 //  Created by 田风有 on 2022/2/6.
-//  2.0.8
+//  2.1.0
 
 #ifndef TFY_PhotoBrowserKit_h
 #define TFY_PhotoBrowserKit_h

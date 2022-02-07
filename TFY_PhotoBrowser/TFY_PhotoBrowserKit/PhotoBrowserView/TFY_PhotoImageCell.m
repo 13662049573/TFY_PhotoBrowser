@@ -48,12 +48,12 @@
 
 - (void)imageWithUrl:(NSString *)photoUrl
          placeHolder:(UIImage *)placeHolder
-           photoItem:(nonnull TFY_PhotoItems *)photoItem{
+           photoItem:(nonnull TFY_PhotoItems *)photoItem {
     NSURL *urlPath = [NSURL fileURLWithPath:photoUrl];
     if ([photoUrl hasPrefix:@"http"] || [photoUrl hasPrefix:@"https"]) {
         urlPath = [NSURL URLWithString:photoUrl];
     }
-    [_photoBrowerImageView imageWithUrl:[NSURL URLWithString:photoUrl]
+    [_photoBrowerImageView imageWithUrl:urlPath
                             progressHUD:_progressHUD
                             placeHolder:placeHolder
                               photoItem:photoItem];

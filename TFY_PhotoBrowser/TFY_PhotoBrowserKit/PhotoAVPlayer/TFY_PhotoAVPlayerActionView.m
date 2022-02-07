@@ -10,8 +10,8 @@
 
 
 @interface TFY_PhotoAVPlayerActionView ()
-@property (nonatomic , weak) UIImageView *pauseImgView;
-@property (nonatomic , weak) UIImageView *dismissImgView;
+@property (nonatomic , weak) UIButton *pausebtn;
+@property (nonatomic , weak) UIButton *dismissbtn;
 @property (nonatomic , strong) UIActivityIndicatorView *indicatorView;
 @end
 
@@ -39,29 +39,33 @@
     NSBundle *bundle = [NSBundle bundleForClass:NSClassFromString(@"PhotoBrowser")];
     
     // 1.stop || play imageView
-    UIImageView *pauseImgView = [[UIImageView alloc] init];
-    [pauseImgView setUserInteractionEnabled:true];
-    [pauseImgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(pauseImageViewDidClick)]];
+    UIButton *pausebtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    pausebtn.userInteractionEnabled = YES;
+    [pausebtn addTarget:self action:@selector(pauseImageViewDidClick) forControlEvents:UIControlEventTouchUpInside];
     if(UIScreen.mainScreen.scale < 3) {
-        [pauseImgView setImage:[UIImage imageNamed:@"PhotoBrowser.bundle/playCenter@2x" inBundle:bundle compatibleWithTraitCollection:nil]];
+        UIImage *image = [UIImage imageNamed:@"PhotoBrowser.bundle/playCenter@2x" inBundle:bundle compatibleWithTraitCollection:nil];
+        [pausebtn setImage:image forState:UIControlStateNormal];
     }else {
-        [pauseImgView setImage:[UIImage imageNamed:@"PhotoBrowser.bundle/playCenter@3x" inBundle:bundle compatibleWithTraitCollection:nil]];
+        UIImage *image = [UIImage imageNamed:@"PhotoBrowser.bundle/playCenter@3x" inBundle:bundle compatibleWithTraitCollection:nil];
+        [pausebtn setImage:image forState:UIControlStateNormal];
     }
-    [self addSubview:pauseImgView];
-    _pauseImgView = pauseImgView;
+    [self addSubview:pausebtn];
+    _pausebtn = pausebtn;
     
     // 2.dismiss imageView
-    UIImageView *dismissImageView = [[UIImageView alloc] init];
-    [dismissImageView setUserInteractionEnabled:true];
-    [dismissImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissImageViewDidClick)]];
+    UIButton *dismissbtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    dismissbtn.userInteractionEnabled = YES;
+    [dismissbtn addTarget:self action:@selector(dismissImageViewDidClick) forControlEvents:UIControlEventTouchUpInside];
     if(UIScreen.mainScreen.scale < 3) {
-        [dismissImageView setImage:[UIImage imageNamed:@"PhotoBrowser.bundle/dismiss@2x" inBundle:bundle compatibleWithTraitCollection:nil]];
+        UIImage *image = [UIImage imageNamed:@"PhotoBrowser.bundle/dismiss@2x" inBundle:bundle compatibleWithTraitCollection:nil];
+        [dismissbtn setImage:image forState:UIControlStateNormal];
     }else {
-        [dismissImageView setImage:[UIImage imageNamed:@"PhotoBrowser.bundle/dismiss@3x" inBundle:bundle compatibleWithTraitCollection:nil]];
+        UIImage *image = [UIImage imageNamed:@"PhotoBrowser.bundle/dismiss@3x" inBundle:bundle compatibleWithTraitCollection:nil];
+        [dismissbtn setImage:image forState:UIControlStateNormal];
     }
-    [dismissImageView setHidden:true];
-    [self addSubview:dismissImageView];
-    _dismissImgView = dismissImageView;
+    dismissbtn.hidden = YES;
+    [self addSubview:dismissbtn];
+    _dismissbtn = dismissbtn;
     
     // 3.loading imageView
     [self addSubview:self.indicatorView];
@@ -69,7 +73,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    _pauseImgView.frame     = CGRectMake((self.frame.size.width - 80) * 0.5, (self.frame.size.height - 80) * 0.5, 80, 80);
+    _pausebtn.frame     = CGRectMake((self.frame.size.width - 80) * 0.5, (self.frame.size.height - 80) * 0.5, 80, 80);
     
     CGFloat y = 25;
     CGFloat x = 10;
@@ -82,16 +86,14 @@
         y = 15;
         x = 35;
     }
-    _dismissImgView.frame   = CGRectMake(x, y, 20, 20);
+    _dismissbtn.frame   = CGRectMake(x, y, 34, 34);
     _indicatorView.frame    = CGRectMake((self.frame.size.width - 30) * 0.5, (self.frame.size.height - 30) * 0.5, 30, 30);
 }
 
 - (void)pauseImageViewDidClick{
-    
-    if (_pauseImgView.hidden == false) {
-        _pauseImgView.hidden = true;
+    if (_pausebtn.hidden == false) {
+        _pausebtn.hidden = true;
     }
-    
     if ([_delegate respondsToSelector:@selector(photoAVPlayerActionViewPauseOrStop)]) {
         [_delegate photoAVPlayerActionViewPauseOrStop];
     }
@@ -104,11 +106,9 @@
 }
 
 - (void)actionViewDidClick{
-    
-    [_dismissImgView setHidden:!_dismissImgView.hidden];
-    
+    [_dismissbtn setHidden:!_dismissbtn.hidden];
     if ([_delegate respondsToSelector:@selector(photoAVPlayerActionViewDidClickIsHidden:)]) {
-        [_delegate photoAVPlayerActionViewDidClickIsHidden:_dismissImgView.isHidden];
+        [_delegate photoAVPlayerActionViewDidClickIsHidden:_dismissbtn.isHidden];
     }
 }
 
@@ -117,11 +117,11 @@
  */
 - (void)avplayerActionViewNeedHidden:(BOOL)isHidden{
     if (isHidden == true) {
-        [_dismissImgView setHidden:true];
+        [_dismissbtn setHidden:true];
         [_indicatorView setHidden:true];
-        [_pauseImgView setHidden:true];
+        [_pausebtn setHidden:true];
     }else {
-        [_pauseImgView setHidden:false];
+        [_pausebtn setHidden:false];
     }
 }
 
@@ -136,12 +136,12 @@
 
 - (void)setIsPlaying:(BOOL)isPlaying{
     _isPlaying = isPlaying;
-    [_pauseImgView setHidden:isPlaying];
+    [_pausebtn setHidden:isPlaying];
 }
 
 - (void)setIsDownloading:(BOOL)isDownloading{
     _isDownloading = isDownloading;
-    [_pauseImgView setHidden:isDownloading];
+    [_pausebtn setHidden:isDownloading];
 }
 
 

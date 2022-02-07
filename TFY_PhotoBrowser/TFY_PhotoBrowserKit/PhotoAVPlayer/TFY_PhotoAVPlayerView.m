@@ -128,13 +128,10 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setActive:true error:nil];
     if(_isSoloAmbient == true) {
-        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
-//        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
+//        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker error:nil];
     }else {
         [session setCategory:AVAudioSessionCategoryAmbient error:nil];
-        
-
-
     }
     // Notification
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive) name:UIApplicationWillResignActiveNotification object:nil];
